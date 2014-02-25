@@ -10,13 +10,12 @@ import android.app.FragmentTransaction;
 import android.support.v13.app.FragmentPagerAdapter;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
-import android.view.Gravity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 public class MainActivity extends Activity implements ActionBar.TabListener {
 
@@ -124,7 +123,7 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
             // Return a PlaceholderFragment (defined as a static inner class below).
             switch (position) {
                 case 0:
-                    return PlaceholderFragment.newInstance(position + 1);
+                    return MediaFragment.newInstance(position + 1);
                 case 1:
                     return ControlFragment.newInstance(position + 1);
                 case 2:
@@ -159,7 +158,7 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
     /**
      * A placeholder fragment containing a simple view.
      */
-    public static class PlaceholderFragment extends Fragment {
+    public static class MediaFragment extends Fragment {
         /**
          * The fragment argument representing the section number for this
          * fragment.
@@ -170,25 +169,28 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
          * Returns a new instance of this fragment for the given section
          * number.
          */
-        public static PlaceholderFragment newInstance(int sectionNumber) {
-            PlaceholderFragment fragment = new PlaceholderFragment();
+        public static MediaFragment newInstance(int sectionNumber) {
+            MediaFragment fragment = new MediaFragment();
             Bundle args = new Bundle();
             args.putInt(ARG_SECTION_NUMBER, sectionNumber);
             fragment.setArguments(args);
             return fragment;
         }
 
-        public PlaceholderFragment() {
+        public MediaFragment() {
         }
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-            TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-            textView.setText(Integer.toString(getArguments().getInt(ARG_SECTION_NUMBER)));
-            return rootView;
+            View rootView = inflater.inflate(R.layout.fragment_media, container, false);
+            /**
+             * TextView textView = (TextView) rootView.findViewById(R.id.section_label);
+             * textView.setText(Integer.toString(getArguments().getInt(ARG_SECTION_NUMBER)));
+            **/
+             return rootView;
         }
+
     }
 
     /**
@@ -221,8 +223,9 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
             public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                      Bundle savedInstanceState) {
                 View rootView = inflater.inflate(R.layout.fragment_control, container, false);
-                /**TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-                textView.setText(Integer.toString(getArguments().getInt(ARG_SECTION_NUMBER)));
+                /**
+                 * TextView textView = (TextView) rootView.findViewById(R.id.section_label);
+                 * textView.setText(Integer.toString(getArguments().getInt(ARG_SECTION_NUMBER)));
                  **/
                 return rootView;
             }
@@ -265,5 +268,47 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
             }
         }
 
+    /**
+     * Navigation Fragment
+     */
+
+    public static class NavFragment extends Fragment {
+        /**
+         * The fragment argument representing the section number for this
+         * fragment.
+         */
+        private static final String ARG_SECTION_NUMBER = "section_number";
+
+        /**
+         * Returns a new instance of this fragment for the given section
+         * number.
+         */
+        public static NavFragment newInstance(int sectionNumber) {
+            NavFragment fragment = new NavFragment();
+            Bundle args = new Bundle();
+            args.putInt(ARG_SECTION_NUMBER, sectionNumber);
+            fragment.setArguments(args);
+            return fragment;
+        }
+
+        public NavFragment() {
+        }
+
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                                 Bundle savedInstanceState) {
+            View rootView = inflater.inflate(R.layout.fragment_nav, container, false);
+            /**TextView textView = (TextView) rootView.findViewById(R.id.section_label);
+             textView.setText(Integer.toString(getArguments().getInt(ARG_SECTION_NUMBER)));
+             **/
+            return rootView;
+        }
+    }
+
+
+    /** Called when the user clicks the Send button */
+    public void sendMessage(View view) {
+        Log.d("INTERFACE", "Scan button pressed");
+    }
 
 }

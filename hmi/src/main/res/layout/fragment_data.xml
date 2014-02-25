@@ -9,65 +9,8 @@
     tools:context="com.uwaft.hmi.MainActivity$PlaceholderFragment">
 
     <TextView
-        android:id="@+id/section_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/listView"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginBottom="57dp" />
-
-    <Button
-        style="@style/btnStyleOrange"
-        android:text="@string/scan"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/button"
-        android:layout_marginTop="81dp"
-        android:layout_below="@+id/section_label"
-        android:layout_centerHorizontal="true" />
-
-    <Button
-        style="@style/btnStyleOrange"
-        android:text="@string/scan"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/button2"
-        android:layout_alignTop="@+id/button"
-        android:layout_toLeftOf="@+id/button"
-        android:layout_marginRight="47dp" />
-
-    <Button
-        style="@style/btnStyleOrange"
-        android:text="@string/scan"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/button3"
-        android:layout_alignTop="@+id/button"
-        android:layout_toRightOf="@+id/button"
-        android:layout_marginLeft="50dp"
-        />
-
-    <SeekBar
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/seekBar"
-        android:layout_below="@+id/section_label"
-        android:layout_alignEnd="@+id/button3"
-        android:layout_alignStart="@+id/button2" />
-
-
-    <ToggleButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textOff="FM"
-        android:textOn="AM"
-        android:id="@+id/toggleButton2"
-        android:layout_alignTop="@+id/toggleButton"
-        android:layout_toRightOf="@+id/toggleButton" />
+        android:text="Data"/>
 
 </RelativeLayout>
