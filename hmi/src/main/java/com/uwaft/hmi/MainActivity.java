@@ -17,6 +17,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.gms.maps.MapFragment;
+
 public class MainActivity extends Activity implements ActionBar.TabListener {
 
     /**
@@ -29,10 +31,14 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
      */
     SectionsPagerAdapter mSectionsPagerAdapter;
 
+    int GLOBAL_TOUCH_POSITION_Y = 0;
+    int GLOBAL_TOUCH_CURRENT_POSITION_Y = 0;
+
     /**
      * The {@link ViewPager} that will host the section contents.
      */
     ViewPager mViewPager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +56,8 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mSectionsPagerAdapter);
+
+
 
         // When swiping between different sections, select the corresponding
         // tab. We can also use ActionBar.Tab#select() to do this if we have
@@ -128,6 +136,8 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
                     return ControlFragment.newInstance(position + 1);
                 case 2:
                     return DataFragment.newInstance(position + 1);
+                case 3:
+                    return NavFragment.newInstance(position + 1);
             }
             return null;
 
@@ -135,8 +145,8 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
 
         @Override
         public int getCount() {
-            // Show 3 total pages.
-            return 3;
+            // Show 4 total pages.
+            return 4;
 
         }
 
@@ -150,6 +160,8 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
                     return getString(R.string.title_section2).toUpperCase(l);
                 case 2:
                     return getString(R.string.title_section3).toUpperCase(l);
+                case 3:
+                    return getString(R.string.title_section4).toUpperCase(l);
             }
             return null;
         }
@@ -268,11 +280,8 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
             }
         }
 
-    /**
-     * Navigation Fragment
-     */
-
     public static class NavFragment extends Fragment {
+
         /**
          * The fragment argument representing the section number for this
          * fragment.
@@ -298,13 +307,16 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_nav, container, false);
+
+
+
+            //View rootView = inflater.inflate(R.layout.fragment_nav, container, false);
             /**TextView textView = (TextView) rootView.findViewById(R.id.section_label);
              textView.setText(Integer.toString(getArguments().getInt(ARG_SECTION_NUMBER)));
              **/
             return rootView;
         }
     }
-
 
     /** Called when the user clicks the Send button */
     public void sendMessage(View view) {
